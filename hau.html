@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Marks Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
+	<style>
+		label {
+			display: block;
+			margin-bottom: 10px;
+            font-family: 'Gloock', serif;
+		}
+
+		input {
+			font-size: 18px;
+			padding: 5px;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+			margin-bottom: 10px;
+            font-family: 'Gloock', serif;
+		}
+
+		textarea {
+			width: 100%;
+			height: 200px;
+			font-size: 18px;
+			padding: 10px;
+			box-sizing: border-box;
+			border: 1px solid #ccc;
+			margin-bottom: 10px;
+            font-family: 'Gloock', serif;
+		}
+
+		button {
+			font-size: 18px;
+			padding: 5px;
+			box-sizing: border-box;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+            font-family: 'Gloock', serif;
+		}
+
+		#output {
+			margin-top: 10px;
+			font-size: 24px;
+            font-family: 'Gloock', serif;
+		}
+	</style>
+</head>
+<body>
+	<h1 style="font-family: 'Gloock', serif;">Marks Calculator</h1>
+	<label for="number">Enter the marks out of 30:</label>
+	<input type="number" id="number">
+	<label for="text">Paste the Essay:</label>
+	<textarea id="text" placeholder="Paste the Essay here"></textarea>
+	<button onclick="calculateTotal()">Calculate Total</button>
+    <br>
+    <label>Note that the value might exceed 30. It is expected, so paste this value in the marks section of the Form</label>
+	<div id="output"></div>
+
+	<script>
+		function calculateTotal() {
+			// Get the number entered by the user
+			var number = document.getElementById("number").value;
+
+			// Get the text entered by the user
+			var text = document.getElementById("text").value;
+
+			// Split the input text into an array of words
+			var words = text.trim().split(/\s+/);
+
+			// Get the number of words
+			var numWords = words.length;
+
+			// Calculate the total based on the number of words
+			var total;
+			if (numWords >= 176) {
+				total = number * 1.5;
+			} else if (numWords >= 151) {
+				total = number * 1.25;
+			} else if (numWords >= 126) {
+				total = number * 1;
+			} else if (numWords >= 101) {
+				total = number * 0.75;
+			} else {
+				total = number * 0.25;
+			}
+
+			// Display the total on the page
+			document.getElementById("output").innerHTML = "Total: " + total;
+		}
+	</script>
+</body>
+</html>
